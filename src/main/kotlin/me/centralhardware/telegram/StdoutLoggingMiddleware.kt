@@ -8,21 +8,24 @@ import dev.inmo.tgbotapi.bot.ktor.middlewares.TelegramBotMiddlewaresPipelinesHan
 import dev.inmo.tgbotapi.extensions.utils.extensions.raw.data
 import dev.inmo.tgbotapi.extensions.utils.extensions.raw.from
 import dev.inmo.tgbotapi.extensions.utils.extensions.raw.text
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-fun Update.chatId(): Long? =
+fun User.message() = "${id.chatId.long}($firstName $lastName)"
+
+fun Update.chatId(): String? =
     when (this) {
-        is EditMessageUpdate -> data.from?.id?.chatId?.long
-        is MessageUpdate -> data.from?.id?.chatId?.long
-        is EditChannelPostUpdate -> data.from?.id?.chatId?.long
-        is ChannelPostUpdate -> null
-        is ChosenInlineResultUpdate -> data.from.id.chatId.long
-        is InlineQueryUpdate -> data.from.id.chatId.long
-        is CallbackQueryUpdate -> data.from.id.chatId.long
-        is ShippingQueryUpdate -> data.from.id.chatId.long
-        is PreCheckoutQueryUpdate -> data.from.id.chatId.long
+        is EditMessageUpdate -> data.from
+        is MessageUpdate -> data.from
+        is EditChannelPostUpdate -> data.from
+        is ChannelPostUpdate -> data.from
+        is ChosenInlineResultUpdate -> data.from
+        is InlineQueryUpdate -> data.from
+        is CallbackQueryUpdate -> data.from
+        is ShippingQueryUpdate -> null
+        is PreCheckoutQueryUpdate -> null
         is PollUpdate -> null
         is PollAnswerUpdate -> null
         is MyChatMemberUpdatedUpdate -> null
@@ -33,13 +36,13 @@ fun Update.chatId(): Long? =
         is ChatBoostUpdatedUpdate -> null
         is ChatBoostRemovedUpdate -> null
         is BusinessConnectionUpdate -> null
-        is BusinessMessageUpdate -> data.from.id.chatId.long
+        is BusinessMessageUpdate -> null
         is EditBusinessMessageUpdate -> null
         is DeletedBusinessMessageUpdate -> null
         is PaidMediaPurchasedUpdate -> null
         is UnknownUpdate -> null
         else -> null
-    }
+    }?.message()
 
 fun Update.message(): String? {
     val text =
