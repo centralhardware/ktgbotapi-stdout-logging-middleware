@@ -15,7 +15,7 @@ repositories {
 val ktorVersion = "3.0.1"
 
 dependencies {
-    implementation("dev.inmo:tgbotapi:20.0.0")
+    implementation("dev.inmo:tgbotapi:20.0.1")
 }
 
 tasks.test {
