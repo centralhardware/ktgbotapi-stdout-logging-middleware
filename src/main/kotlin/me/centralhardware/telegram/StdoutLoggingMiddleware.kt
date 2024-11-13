@@ -53,8 +53,8 @@ fun ContentMessage<MessageContent>.format(): String? = when (content) {
 }
 
 fun Update.format(): String? {
-    var from: String = "";
-    var text: String = ""
+    var from = "";
+    var text = ""
     when (this) {
             is EditMessageUpdate -> {
                 from = data.from.format()
