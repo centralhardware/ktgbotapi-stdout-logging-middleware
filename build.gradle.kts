@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.inmo:tgbotapi:23.1.0")
+    implementation("dev.inmo:tgbotapi:23.1.1")
 }
 
 tasks.test {
