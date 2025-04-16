@@ -27,7 +27,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "me.centralhardware"
-            artifactId = "bot-common"
+            artifactId = "ktgbotapi-stdout-logging-middleware"
             version = "1.0-SNAPSHOT"
             from(components["java"])
         }
