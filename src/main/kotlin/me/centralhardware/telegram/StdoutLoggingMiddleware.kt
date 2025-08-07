@@ -210,4 +210,5 @@ fun TelegramBotMiddlewaresPipelinesHandler.Builder.stdoutLogging() {
             null
         }
     }
+    KSLog.info("Initialized stdout logging middleware")
 }

@@ -13,14 +13,14 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.inmo:tgbotapi:27.1.1")
+    implementation("dev.inmo:tgbotapi:27.1.2")
 }
 
 tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(24)
 }
 
 publishing {
